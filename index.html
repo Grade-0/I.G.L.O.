@@ -1,0 +1,3284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ibraham Goldstein Law Office | City Attorney / Private Criminal Defense</title>
+  <meta name="description" content="Ibraham Goldstein Law Office — City Attorney / Private Criminal Defense. Premium in-city legal representation for hearings, investigations, court matters, and criminal defense within a serious FiveM roleplay environment." />
+  <style>
+    :root {
+      --bg: #0b0b0d;
+      --bg-soft: #121217;
+      --panel: rgba(21, 21, 27, 0.78);
+      --panel-strong: rgba(16, 16, 21, 0.92);
+      --panel-border: rgba(196, 158, 88, 0.22);
+      --text: #f2eee4;
+      --muted: #b8b1a0;
+      --soft: #8f8878;
+      --gold: #d2af6c;
+      --gold-2: #aa8450;
+      --bronze: #7d6040;
+      --shadow: 0 18px 48px rgba(0, 0, 0, 0.42);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --max: 1240px;
+      --transition: 220ms ease;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(210, 175, 108, 0.14), transparent 26%),
+        radial-gradient(circle at 90% 12%, rgba(170, 132, 80, 0.1), transparent 24%),
+        linear-gradient(180deg, #08080a 0%, #0d0d11 40%, #0b0b0d 100%);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      inset: auto;
+      pointer-events: none;
+      z-index: -1;
+      filter: blur(60px);
+      opacity: 0.6;
+    }
+
+    body::before {
+      width: 420px;
+      height: 420px;
+      left: -120px;
+      top: 120px;
+      background: rgba(210, 175, 108, 0.08);
+    }
+
+    body::after {
+      width: 360px;
+      height: 360px;
+      right: -120px;
+      top: 400px;
+      background: rgba(125, 96, 64, 0.12);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(calc(100% - 2rem), var(--max));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(18px);
+      background: rgba(8, 8, 10, 0.72);
+      border-bottom: 1px solid rgba(196, 158, 88, 0.1);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .brand-mark {
+      font-size: 0.75rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.9;
+    }
+
+    .brand-title {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.25rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .brand-subtitle {
+      font-size: 0.82rem;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      font-size: 0.94rem;
+      color: var(--muted);
+      transition: color var(--transition), transform var(--transition);
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--text);
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .nav-cta {
+      padding: 0.85rem 1.15rem;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(210, 175, 108, 0.18), rgba(125, 96, 64, 0.22));
+      border: 1px solid rgba(210, 175, 108, 0.34);
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.03) inset;
+      color: var(--text) !important;
+    }
+
+    main {
+      padding-bottom: 4rem;
+    }
+
+    section {
+      padding: 5.5rem 0;
+    }
+
+    .hero {
+      padding-top: 5rem;
+      padding-bottom: 3rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 1.6rem;
+      align-items: stretch;
+    }
+
+    .glass {
+      position: relative;
+      background: linear-gradient(180deg, rgba(18,18,23,0.83), rgba(12,12,16,0.92));
+      border: 1px solid var(--panel-border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .glass::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(210, 175, 108, 0.08), transparent 26%, transparent 70%, rgba(170,132,80,0.08));
+      pointer-events: none;
+    }
+
+    .hero-panel {
+      padding: 3rem;
+      min-height: 540px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-size: 0.82rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.4rem;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 42px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold));
+    }
+
+    h1, h2, h3, h4 {
+      margin: 0;
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+    }
+
+    h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.7rem, 5vw, 5rem);
+      text-transform: uppercase;
+      max-width: 11ch;
+    }
+
+    .hero h1 span {
+      color: var(--gold);
+      display: block;
+    }
+
+    .hero-subtitle {
+      margin-top: 1rem;
+      font-size: 1rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+    }
+
+    .hero-copy {
+      margin-top: 1.6rem;
+      max-width: 62ch;
+      font-size: 1.02rem;
+      color: #ded8cb;
+    }
+
+    .hero-actions {
+      margin-top: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.95rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.7rem;
+      border: 0;
+      border-radius: 999px;
+      padding: 1rem 1.35rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform var(--transition), box-shadow var(--transition), background var(--transition), border-color var(--transition);
+      min-height: 52px;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    .btn-primary {
+      color: #1a1409;
+      background: linear-gradient(135deg, #dfc28f, #b88d51);
+      box-shadow: 0 18px 28px rgba(177, 134, 67, 0.18);
+    }
+
+    .btn-secondary {
+      color: var(--text);
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(210, 175, 108, 0.28);
+    }
+
+    .hero-meta {
+      margin-top: 2.2rem;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.85rem;
+    }
+
+    .meta-card {
+      padding: 1rem;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.028);
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .meta-card strong {
+      display: block;
+      font-size: 1.05rem;
+      color: var(--gold);
+      margin-bottom: 0.2rem;
+    }
+
+    .meta-card span {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .hero-side {
+      display: grid;
+      gap: 1rem;
+      grid-template-rows: 1.05fr 0.95fr;
+    }
+
+    .crest-card,
+    .notice-card {
+      padding: 2rem;
+    }
+
+    .crest {
+      width: 118px;
+      height: 118px;
+      border-radius: 28px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.12), transparent 32%), linear-gradient(135deg, rgba(210,175,108,0.24), rgba(125,96,64,0.3));
+      border: 1px solid rgba(210, 175, 108, 0.34);
+      display: grid;
+      place-items: center;
+      margin-bottom: 1.4rem;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 20px 40px rgba(0,0,0,0.35);
+    }
+
+    .crest svg {
+      width: 56px;
+      height: 56px;
+      fill: var(--text);
+      opacity: 0.95;
+    }
+
+    .side-title {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.65rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .side-copy {
+      color: var(--muted);
+      margin-bottom: 1.4rem;
+    }
+
+    .stack-list {
+      display: grid;
+      gap: 0.8rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .stack-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+      color: #e7e1d6;
+    }
+
+    .bullet {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--gold), var(--bronze));
+      margin-top: 0.48rem;
+      flex: 0 0 auto;
+      box-shadow: 0 0 16px rgba(210,175,108,0.34);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .section-head p {
+      max-width: 60ch;
+      color: var(--muted);
+      margin: 0.9rem 0 0;
+    }
+
+    .kicker {
+      color: var(--gold);
+      font-size: 0.82rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2rem, 3vw, 3rem);
+      margin-top: 0.4rem;
+    }
+
+    .trust-grid,
+    .service-grid,
+    .faq-grid,
+    .footer-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .trust-grid {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+
+    .trust-card,
+    .service-card,
+    .profile-card,
+    .faq-card,
+    .disclaimer-card,
+    .form-shell,
+    .footer-panel,
+    .overview-card {
+      background: linear-gradient(180deg, rgba(18,18,23,0.8), rgba(11,11,14,0.94));
+      border: 1px solid var(--panel-border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+    }
+
+    .trust-card {
+      padding: 1.4rem;
+      min-height: 168px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform var(--transition), border-color var(--transition);
+    }
+
+    .trust-card:hover,
+    .service-card:hover,
+    .overview-card:hover,
+    .profile-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(210, 175, 108, 0.36);
+    }
+
+    .trust-index {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-size: 0.84rem;
+      color: var(--gold);
+      background: rgba(210, 175, 108, 0.08);
+      border: 1px solid rgba(210, 175, 108, 0.18);
+      margin-bottom: 1rem;
+    }
+
+    .trust-card h3,
+    .service-card h3,
+    .faq-q,
+    .profile-title,
+    .overview-card h3 {
+      font-size: 1.1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .trust-card p,
+    .service-card p,
+    .profile-copy,
+    .overview-card p,
+    .disclaimer-card p,
+    .faq-a {
+      color: var(--muted);
+      margin-bottom: 0;
+    }
+
+    .overview-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 1rem;
+    }
+
+    .overview-card {
+      padding: 2rem;
+    }
+
+    .overview-card ul {
+      list-style: none;
+      margin: 1.2rem 0 0;
+      padding: 0;
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    .overview-card li {
+      display: flex;
+      gap: 0.75rem;
+      color: #e2ddd1;
+    }
+
+    .service-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .service-card {
+      padding: 1.55rem;
+      display: flex;
+      flex-direction: column;
+      min-height: 240px;
+      transition: transform var(--transition), border-color var(--transition);
+    }
+
+    .service-tag,
+    .profile-tag {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      padding: 0.34rem 0.65rem;
+      border-radius: 999px;
+      font-size: 0.74rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      background: rgba(210, 175, 108, 0.08);
+      border: 1px solid rgba(210, 175, 108, 0.2);
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .service-card p {
+      margin-top: 0.7rem;
+      flex: 1;
+    }
+
+    .service-foot {
+      margin-top: 1.1rem;
+      font-size: 0.9rem;
+      color: #ddd6c7;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 1rem;
+    }
+
+    .profile-wrap {
+      display: grid;
+      grid-template-columns: 0.82fr 1.18fr;
+      gap: 1rem;
+    }
+
+    .profile-card {
+      padding: 2rem;
+    }
+
+    .profile-portrait {
+      aspect-ratio: 3 / 4;
+      border-radius: 22px;
+      background:
+        radial-gradient(circle at 50% 16%, rgba(210,175,108,0.22), transparent 28%),
+        linear-gradient(180deg, rgba(26,26,33,0.96), rgba(10,10,13,0.98));
+      border: 1px solid rgba(210, 175, 108, 0.22);
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 1.4rem;
+    }
+
+    .profile-portrait::before {
+      content: "IG";
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(4rem, 7vw, 6rem);
+      letter-spacing: 0.08em;
+      color: rgba(242, 238, 228, 0.9);
+      text-shadow: 0 0 28px rgba(210, 175, 108, 0.16);
+    }
+
+    .profile-title {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.8rem, 2.8vw, 2.6rem);
+      margin-top: 0.55rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .profile-subtitle {
+      color: var(--gold);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+    }
+
+    .profile-points {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.8rem;
+      margin-top: 1.3rem;
+    }
+
+    .profile-point {
+      padding: 1rem;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .profile-point strong {
+      display: block;
+      color: var(--text);
+      margin-bottom: 0.2rem;
+    }
+
+    .form-layout {
+      display: grid;
+      grid-template-columns: 0.78fr 1.22fr;
+      gap: 1rem;
+      align-items: start;
+    }
+
+    .disclaimer-card,
+    .form-shell {
+      padding: 1.7rem;
+    }
+
+    .disclaimer-card {
+      position: sticky;
+      top: 100px;
+    }
+
+    .disclaimer-card h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.65rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .disclaimer-list {
+      list-style: none;
+      padding: 0;
+      margin: 1.2rem 0 0;
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    .disclaimer-list li {
+      display: flex;
+      gap: 0.7rem;
+      color: #e4dfd3;
+    }
+
+    .disclaimer-caption {
+      margin-top: 1.2rem;
+      padding: 0.95rem 1rem;
+      border-radius: 14px;
+      background: rgba(210, 175, 108, 0.06);
+      border: 1px solid rgba(210, 175, 108, 0.14);
+      color: #ece4d6;
+      font-size: 0.94rem;
+    }
+
+    .form-intro {
+      margin-bottom: 1.2rem;
+    }
+
+    .form-intro p {
+      margin: 0.7rem 0 0;
+      color: var(--muted);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .field,
+    .field-full {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .field-full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-size: 0.88rem;
+      color: #e9e2d5;
+      letter-spacing: 0.04em;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border-radius: 14px;
+      border: 1px solid rgba(210, 175, 108, 0.16);
+      background: rgba(255,255,255,0.028);
+      color: var(--text);
+      padding: 0.95rem 1rem;
+      font: inherit;
+      transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: #8a8375;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: rgba(210, 175, 108, 0.42);
+      box-shadow: 0 0 0 4px rgba(210, 175, 108, 0.09);
+      background: rgba(255,255,255,0.04);
+    }
+
+    textarea {
+      min-height: 152px;
+      resize: vertical;
+    }
+
+    .check-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.8rem;
+    }
+
+    .check-card {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      padding: 0.95rem 1rem;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.05);
+      background: rgba(255,255,255,0.025);
+    }
+
+    .check-card input {
+      width: 18px;
+      height: 18px;
+      margin-top: 0.18rem;
+      accent-color: #c69b55;
+      padding: 0;
+      box-shadow: none;
+    }
+
+    .check-card span {
+      color: #e4ddcf;
+      font-size: 0.95rem;
+    }
+
+    .upload-box {
+      position: relative;
+      border: 1px dashed rgba(210, 175, 108, 0.28);
+      border-radius: 18px;
+      background: rgba(210, 175, 108, 0.04);
+      padding: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .upload-box input[type="file"] {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .upload-note strong {
+      display: block;
+      margin-bottom: 0.2rem;
+      color: var(--text);
+    }
+
+    .upload-note span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .upload-pill {
+      padding: 0.65rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(210, 175, 108, 0.22);
+      color: var(--gold);
+      background: rgba(255,255,255,0.03);
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
+
+    .form-actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-top: 0.55rem;
+    }
+
+    .fineprint {
+      font-size: 0.84rem;
+      color: var(--soft);
+      margin-top: 0.3rem;
+    }
+
+    .success-state {
+      display: none;
+      margin-top: 1rem;
+      padding: 1.4rem;
+      border-radius: 18px;
+      border: 1px solid rgba(210, 175, 108, 0.24);
+      background: linear-gradient(180deg, rgba(210,175,108,0.08), rgba(255,255,255,0.025));
+    }
+
+    .success-state.active {
+      display: block;
+      animation: rise 320ms ease;
+    }
+
+    .success-state h4 {
+      font-size: 1.18rem;
+      margin-bottom: 0.45rem;
+      color: var(--gold);
+    }
+
+    .success-state p {
+      color: #ece5d8;
+      margin: 0;
+    }
+
+    .faq-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .faq-card {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .faq-item + .faq-item {
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .faq-button {
+      width: 100%;
+      text-align: left;
+      background: transparent;
+      border: 0;
+      color: var(--text);
+      padding: 1.25rem 1.35rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .faq-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1px solid rgba(210, 175, 108, 0.22);
+      display: grid;
+      place-items: center;
+      color: var(--gold);
+      flex: 0 0 auto;
+      transition: transform var(--transition);
+    }
+
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 260ms ease;
+      padding: 0 1.35rem;
+    }
+
+    .faq-item.open .faq-a {
+      max-height: 220px;
+      padding: 0 1.35rem 1.25rem;
+    }
+
+    .footer {
+      padding-top: 1rem;
+      padding-bottom: 3rem;
+    }
+
+    .footer-panel {
+      padding: 2rem;
+    }
+
+    .footer-grid {
+      grid-template-columns: 1.15fr 0.85fr 0.85fr;
+    }
+
+    .footer p,
+    .footer li {
+      color: var(--muted);
+    }
+
+    .footer ul {
+      margin: 0.9rem 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 0.65rem;
+    }
+
+    .footer-heading {
+      font-size: 0.85rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      margin-bottom: 0.85rem;
+    }
+
+    .footer-note {
+      margin-top: 1.4rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      font-size: 0.88rem;
+      color: var(--soft);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 560ms ease, transform 560ms ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .error {
+      border-color: rgba(226, 112, 112, 0.52) !important;
+      box-shadow: 0 0 0 4px rgba(226, 112, 112, 0.08) !important;
+    }
+
+    .field-error {
+      min-height: 1.1rem;
+      color: #e7a4a4;
+      font-size: 0.78rem;
+      margin-top: 0.08rem;
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 1160px) {
+      .hero-grid,
+      .overview-grid,
+      .profile-wrap,
+      .form-layout,
+      .footer-grid,
+      .trust-grid,
+      .service-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .trust-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .service-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .form-layout,
+      .profile-wrap,
+      .overview-grid,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .disclaimer-card {
+        position: static;
+      }
+    }
+
+    @media (max-width: 820px) {
+      section { padding: 4.5rem 0; }
+
+      .nav {
+        padding: 0.8rem 0;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      .hero-panel,
+      .crest-card,
+      .notice-card,
+      .overview-card,
+      .service-card,
+      .profile-card,
+      .disclaimer-card,
+      .form-shell,
+      .footer-panel {
+        padding: 1.35rem;
+      }
+
+      .hero-panel {
+        min-height: unset;
+      }
+
+      .hero-meta,
+      .form-grid,
+      .check-grid,
+      .trust-grid,
+      .service-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-actions,
+      .form-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .section-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    .records-layout {
+      display: grid;
+      grid-template-columns: 320px minmax(0, 1fr);
+      gap: 1.25rem;
+      align-items: start;
+    }
+
+    .records-shell {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .records-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .archive-input {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      clip-path: inset(50%);
+    }
+
+    .archive-status {
+      margin-top: 1rem;
+      color: var(--muted);
+      font-size: 0.92rem;
+      min-height: 1.5em;
+    }
+
+    .records-toolbar {
+      padding: 1.2rem;
+      border-bottom: 1px solid rgba(210, 175, 108, 0.12);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .filter-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(220px, 0.65fr) auto;
+      gap: 0.85rem;
+      align-items: center;
+    }
+
+    .records-count {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 56px;
+      padding: 0 1rem;
+      border-radius: 14px;
+      border: 1px solid rgba(210, 175, 108, 0.16);
+      background: rgba(255,255,255,0.028);
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .records-desk {
+      display: grid;
+      grid-template-columns: 360px minmax(0, 1fr);
+      min-height: 760px;
+    }
+
+    .records-list-panel {
+      border-right: 1px solid rgba(210, 175, 108, 0.12);
+      background: rgba(255,255,255,0.015);
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+
+    .desk-heading {
+      padding: 1rem 1.15rem 0.7rem;
+      border-bottom: 1px solid rgba(210, 175, 108, 0.08);
+    }
+
+    .desk-heading h3 {
+      font-size: 1.02rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .desk-heading p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .records-list {
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      overflow: auto;
+      max-height: 690px;
+    }
+
+    .record-card {
+      width: 100%;
+      border: 1px solid rgba(255,255,255,0.05);
+      background: rgba(255,255,255,0.02);
+      border-radius: 18px;
+      padding: 1rem;
+      color: var(--text);
+      text-align: left;
+      cursor: pointer;
+      transition: transform var(--transition), border-color var(--transition), background var(--transition), box-shadow var(--transition);
+    }
+
+    .record-card:hover,
+    .record-card:focus-visible {
+      transform: translateY(-1px);
+      border-color: rgba(210, 175, 108, 0.3);
+      background: rgba(255,255,255,0.04);
+      outline: none;
+    }
+
+    .record-card.active {
+      border-color: rgba(210, 175, 108, 0.42);
+      background: linear-gradient(180deg, rgba(210, 175, 108, 0.08), rgba(255,255,255,0.03));
+      box-shadow: 0 0 0 1px rgba(210, 175, 108, 0.14) inset;
+    }
+
+    .record-card-top,
+    .record-card-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.8rem;
+    }
+
+    .record-card-top {
+      margin-bottom: 0.55rem;
+    }
+
+    .record-card-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .record-card-subtitle {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-top: 0.15rem;
+    }
+
+    .queue-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.42rem 0.68rem;
+      border-radius: 999px;
+      border: 1px solid rgba(210, 175, 108, 0.2);
+      background: rgba(210, 175, 108, 0.08);
+      color: #f4e6c5;
+      font-size: 0.76rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .queue-badge.status-reviewing {
+      border-color: rgba(122, 167, 227, 0.24);
+      background: rgba(122, 167, 227, 0.12);
+      color: #dfeaff;
+    }
+
+    .queue-badge.status-awaiting-client {
+      border-color: rgba(170, 132, 80, 0.28);
+      background: rgba(170, 132, 80, 0.14);
+      color: #f1dec1;
+    }
+
+    .queue-badge.status-accepted,
+    .queue-badge.status-closed {
+      border-color: rgba(102, 184, 132, 0.24);
+      background: rgba(102, 184, 132, 0.12);
+      color: #ddf7e6;
+    }
+
+    .queue-badge.status-closed {
+      border-color: rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.07);
+      color: #ebebeb;
+    }
+
+    .record-card-meta {
+      color: var(--soft);
+      font-size: 0.82rem;
+    }
+
+    .record-detail-panel {
+      padding: 1.35rem;
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .record-detail-empty {
+      display: grid;
+      place-items: center;
+      min-height: 100%;
+      padding: 2rem;
+      border-radius: 22px;
+      border: 1px dashed rgba(210, 175, 108, 0.16);
+      background: rgba(255,255,255,0.015);
+    }
+
+    .record-detail-empty h3 {
+      margin-bottom: 0.5rem;
+    }
+
+    .record-detail-empty p {
+      max-width: 46ch;
+      margin: 0;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .record-detail-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .record-detail-title {
+      font-size: clamp(1.45rem, 2vw, 2rem);
+      font-family: Georgia, "Times New Roman", serif;
+      margin-bottom: 0.35rem;
+    }
+
+    .record-detail-subtitle {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .record-detail-meta,
+    .record-grid,
+    .record-admin-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.85rem;
+    }
+
+    .record-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .record-admin-grid {
+      grid-template-columns: minmax(220px, 0.55fr) minmax(0, 1fr);
+      align-items: start;
+    }
+
+    .record-line {
+      border: 1px solid rgba(255,255,255,0.05);
+      background: rgba(255,255,255,0.022);
+      border-radius: 16px;
+      padding: 0.85rem 0.95rem;
+      min-height: 100%;
+    }
+
+    .record-line strong {
+      display: block;
+      margin-bottom: 0.28rem;
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .record-line span,
+    .record-line p {
+      color: var(--text);
+      margin: 0;
+      word-break: break-word;
+    }
+
+    .record-line .muted {
+      color: var(--muted);
+    }
+
+    .record-detail-section {
+      border-top: 1px solid rgba(210, 175, 108, 0.1);
+      padding-top: 1rem;
+    }
+
+    .record-detail-section h4 {
+      font-size: 1rem;
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.02em;
+    }
+
+    .record-detail-text {
+      white-space: pre-wrap;
+      line-height: 1.7;
+    }
+
+    .record-chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .record-chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.52rem 0.78rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.05);
+      color: var(--text);
+      font-size: 0.84rem;
+    }
+
+    .record-note-field textarea {
+      min-height: 160px;
+    }
+
+    .detail-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 0.85rem;
+    }
+
+    .attachments-list {
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .attachment-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.95rem 1rem;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.05);
+      background: rgba(255,255,255,0.022);
+    }
+
+    .attachment-item strong {
+      display: block;
+      margin-bottom: 0.22rem;
+    }
+
+    .attachment-item span {
+      color: var(--muted);
+      font-size: 0.88rem;
+      word-break: break-word;
+    }
+
+    .empty-records {
+      padding: 1rem;
+      border-radius: 16px;
+      border: 1px dashed rgba(210, 175, 108, 0.16);
+      color: var(--muted);
+      text-align: center;
+    }
+
+    @media (max-width: 980px) {
+      .records-layout,
+      .records-desk,
+      .record-detail-meta,
+      .record-grid,
+      .record-admin-grid,
+      .filter-row {
+        grid-template-columns: 1fr;
+      }
+
+      .records-list-panel {
+        border-right: none;
+        border-bottom: 1px solid rgba(210, 175, 108, 0.12);
+      }
+
+      .records-list {
+        max-height: 420px;
+      }
+
+      .records-count {
+        justify-content: flex-start;
+      }
+
+      .attachment-item,
+      .record-card-top,
+      .record-card-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="Ibraham Goldstein Law Office home">
+        <span class="brand-mark">Established In-City Counsel</span>
+        <span class="brand-title">Ibraham Goldstein Law Office</span>
+        <span class="brand-subtitle">City Attorney / Private Criminal Defense</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#counsel">Lead Counsel</a>
+        <a href="#request">Request Form</a>
+        <a href="#records">Records Desk</a>
+        <a href="#faq">FAQ</a>
+        <a class="nav-cta" href="#request">Request Counsel</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="glass hero-panel reveal">
+          <div class="eyebrow">Strategic In-City Representation</div>
+          <h1>Ibraham <span>Goldstein</span> Law Office</h1>
+          <div class="hero-subtitle">City Attorney / Private Criminal Defense</div>
+          <p class="hero-copy">
+            Focused counsel for citizens, operators, organizations, and professionals facing arrests, investigations, warrants,
+            hearings, regulatory disputes, and courtroom exposure. Built for decisive strategy, disciplined preparation, and discreet handling from first contact to final disposition.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#request">Request Counsel</a>
+            <a class="btn btn-secondary" href="#services">View Legal Services</a>
+          </div>
+          <div class="hero-meta">
+            <div class="meta-card">
+              <strong>Defense First</strong>
+              <span>Immediate response for detentions, questioning, and active case pressure.</span>
+            </div>
+            <div class="meta-card">
+              <strong>Prepared for Court</strong>
+              <span>Hearings, filings, negotiation strategy, and trial posture built with precision.</span>
+            </div>
+            <div class="meta-card">
+              <strong>Discreet Intake</strong>
+              <span>In-city requests only. Sensitive case information handled with professional restraint.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-side reveal">
+          <div class="glass crest-card">
+            <div class="crest" aria-hidden="true">
+              <svg viewBox="0 0 24 24" role="presentation" focusable="false">
+                <path d="M12 2 4 5v6c0 5.25 3.42 9.78 8 11 4.58-1.22 8-5.75 8-11V5l-8-3Zm0 2.2 6 2.25V11c0 4.1-2.51 7.96-6 9.12C8.51 18.96 6 15.1 6 11V6.45L12 4.2Zm-2.8 4.3a1 1 0 0 0-.98 1.2l1.06 5.08a1 1 0 0 0 .98.8h3.48a1 1 0 0 0 .98-.8l1.06-5.08a1 1 0 0 0-.98-1.2h-1.87V7.4a1.93 1.93 0 1 0-3.86 0v1.1H9.2Zm1.87 0V7.4a.93.93 0 1 1 1.86 0v1.1h-1.86Z"/>
+              </svg>
+            </div>
+            <h2 class="side-title">Measured counsel. Strong posture. Quiet confidence.</h2>
+            <p class="side-copy">
+              For clients facing immediate exposure, public pressure, or procedural risk, the office is structured to move early, build leverage, and protect position before momentum turns against the defense.
+            </p>
+            <ul class="stack-list">
+              <li><span class="bullet"></span><span>Criminal defense strategy from initial detention through courtroom resolution.</span></li>
+              <li><span class="bullet"></span><span>Advisement for warrants, investigations, interviews, and record-related matters.</span></li>
+              <li><span class="bullet"></span><span>Discrete representation for organizations, executives, and regulated operations.</span></li>
+            </ul>
+          </div>
+
+          <div class="glass notice-card">
+            <div class="service-tag">Office Standard</div>
+            <h2 class="side-title">Request review before you speak further.</h2>
+            <p class="side-copy">
+              If you have been detained, served, questioned, or notified of an active matter, submit a legal request promptly and keep your case summary direct, accurate, and limited to in-city facts.
+            </p>
+            <a class="btn btn-secondary" href="#request">Begin Legal Request</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="trust-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="kicker">Operating Principles</div>
+            <h2 class="section-title" id="trust-title">Professional standards built for pressure.</h2>
+          </div>
+          <p>
+            The office is built around courtroom discipline, controlled communication, and early intervention where timing can materially change case exposure.
+          </p>
+        </div>
+        <div class="trust-grid">
+          <article class="trust-card reveal">
+            <div class="trust-index">01</div>
+            <h3>Trial Ready Representation</h3>
+            <p>Case posture is developed with hearings, filings, negotiation, and contested proceedings in view from the start.</p>
+          </article>
+          <article class="trust-card reveal">
+            <div class="trust-index">02</div>
+            <h3>Discreet Case Handling</h3>
+            <p>Communication remains measured, deliberate, and limited to what advances your position.</p>
+          </article>
+          <article class="trust-card reveal">
+            <div class="trust-index">03</div>
+            <h3>Citywide Criminal Defense</h3>
+            <p>Coverage for arrests, investigations, citations, warrants, holds, interviews, and charging decisions.</p>
+          </article>
+          <article class="trust-card reveal">
+            <div class="trust-index">04</div>
+            <h3>Court &amp; Hearing Preparation</h3>
+            <p>Structured review of reports, witness issues, procedural defects, and argument strategy before appearance.</p>
+          </article>
+          <article class="trust-card reveal">
+            <div class="trust-index">05</div>
+            <h3>Client-Focused Strategy</h3>
+            <p>Every matter is evaluated on exposure, leverage, timing, and the cleanest path toward an acceptable result.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" aria-labelledby="about-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="kicker">About The Office</div>
+            <h2 class="section-title" id="about-title">A disciplined legal office for complex in-city matters.</h2>
+          </div>
+          <p>
+            Ibraham Goldstein Law Office serves citizens, firms, and institutions that need prepared counsel rather than reactive commentary. The office is designed around strategic intake, careful fact review, and authoritative courtroom presentation.
+          </p>
+        </div>
+        <div class="overview-grid">
+          <article class="overview-card reveal">
+            <h3>Office Overview</h3>
+            <p>
+              The practice centers on criminal defense, hearings, warrant guidance, civil disputes, business-facing legal review, and sensitive city matters where reputation, timing, and procedural posture all matter. Every matter begins with a focused intake and a realistic assessment of exposure, leverage, and next-step options.
+            </p>
+            <ul>
+              <li><span class="bullet"></span><span>Structured intake designed to surface the facts that actually move a case.</span></li>
+              <li><span class="bullet"></span><span>Professional communication standard suited for government, court, and high-visibility matters.</span></li>
+              <li><span class="bullet"></span><span>Representation style that prioritizes controlled messaging, preparation, and outcome planning.</span></li>
+            </ul>
+          </article>
+          <article class="overview-card reveal">
+            <h3>When clients usually retain counsel</h3>
+            <p>
+              Most requests come in after an arrest, interview, warrant notice, filed complaint, court setting, business dispute, enforcement action, or administrative issue where delay only increases unnecessary risk.
+            </p>
+            <ul>
+              <li><span class="bullet"></span><span>Detained or recently released after a stop, arrest, or hold.</span></li>
+              <li><span class="bullet"></span><span>Contacted by investigators or named in a report.</span></li>
+              <li><span class="bullet"></span><span>Served for a hearing, civil complaint, or city action.</span></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" aria-labelledby="services-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="kicker">Practice Areas</div>
+            <h2 class="section-title" id="services-title">Legal services tailored to exposure, timing, and leverage.</h2>
+          </div>
+          <p>
+            Built for matters that require careful positioning rather than rushed reaction. Each service area is structured around practical defense, procedure, and controlled advocacy.
+          </p>
+        </div>
+        <div class="service-grid">
+          <article class="service-card reveal">
+            <div class="service-tag">Defense</div>
+            <h3>Criminal Defense</h3>
+            <p>Representation for arrests, charging decisions, investigations, interviews, and contested criminal matters where immediate legal posture matters.</p>
+            <div class="service-foot">Arrests • Questioning • Charge Review • Negotiation</div>
+          </article>
+          <article class="service-card reveal">
+            <div class="service-tag">Custody</div>
+            <h3>Bail / Hold Assistance</h3>
+            <p>Support for detained clients, release strategy, status review, and rapid engagement when liberty and leverage are both in play.</p>
+            <div class="service-foot">Detention Review • Release Position • Early Intervention</div>
+          </article>
+          <article class="service-card reveal">
+            <div class="service-tag">Litigation</div>
+            <h3>Court Representation</h3>
+            <p>Prepared appearance work for hearings, motions, arguments, continuances, contested proceedings, and courtroom advocacy.</p>
+            <div class="service-foot">Hearings • Filings • Trial Posture • Case Strategy</div>
+          </article>
+          <article class="service-card reveal">
+            <div class="service-tag">Investigation</div>
+            <h3>Warrant / Investigation Guidance</h3>
+            <p>Strategic advisement when a client is under review, contacted by investigators, or facing warrant-related exposure.</p>
+            <div class="service-foot">Interviews • Warrant Issues • Investigation Response</div>
+          </article>
+          <article class="service-card reveal">
+            <div class="service-tag">Civil</div>
+            <h3>Civil Disputes</h3>
+            <p>Measured advocacy for private disputes, liability conflicts, contract disagreements, and reputation-sensitive controversies.</p>
+            <div class="service-foot">Claims • Settlement Position • Liability Review</div>
+          </article>
+          <article class="service-card reveal">
+            <div class="service-tag">Commercial</div>
+            <h3>Business / Contract Review</h3>
+            <p>Legal review for organizations, ventures, partnerships, and operational agreements where structure and risk allocation require precision.</p>
+            <div class="service-foot">Entity Advice • Contract Terms • Operational Risk</div>
+          </article>
+          <article class="service-card reveal">
+            <div class="service-tag">Records</div>
+            <h3>Record Sealing / Expungement Requests</h3>
+            <p>Evaluation of record-related relief, cleanup strategy, and position building for clients seeking a cleaner path forward.</p>
+            <div class="service-foot">Record Review • Relief Petitions • Future Positioning</div>
+          </article>
+          <article class="service-card reveal">
+            <div class="service-tag">Government</div>
+            <h3>Government / City Matters</h3>
+            <p>Advisement and representation for administrative disputes, regulatory questions, office-facing concerns, and city process issues.</p>
+            <div class="service-foot">Administrative Response • City Process • Official Matters</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="counsel" aria-labelledby="counsel-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="kicker">Lead Counsel</div>
+            <h2 class="section-title" id="counsel-title">Ibraham Goldstein</h2>
+          </div>
+          <p>
+            A reputation built on controlled presence, deliberate advocacy, and a refusal to let pressure dictate the defense.
+          </p>
+        </div>
+        <div class="profile-wrap">
+          <article class="profile-card reveal">
+            <div class="profile-portrait" aria-hidden="true"></div>
+            <div class="profile-tag">Lead Counsel</div>
+            <h3 class="profile-title">City Attorney / Private Criminal Defense</h3>
+            <div class="profile-subtitle">Professional, strategic, courtroom-focused</div>
+            <p class="profile-copy">
+              Goldstein is known for a measured legal style: slow enough to catch what others miss, direct enough to move a matter when it matters most. Clients retain the office when exposure is real, public scrutiny is rising, or the record needs a sharper hand than routine counsel can provide.
+            </p>
+          </article>
+          <article class="profile-card reveal">
+            <div class="profile-tag">Approach</div>
+            <h3 class="profile-title">Representation rooted in precision, discretion, and leverage.</h3>
+            <p class="profile-copy">
+              Every case is evaluated through three lenses: what the record currently shows, what the government or opposing side will try to build next, and what action most improves the client’s position now. That approach keeps the office grounded in strategy rather than theatrics.
+            </p>
+            <p class="profile-copy">
+              The office maintains a professional standard suited for clients facing criminal allegations, administrative disputes, civil conflict, or business-sensitive matters. Communication stays controlled. Preparation stays high. Positioning stays intentional.
+            </p>
+            <div class="profile-points">
+              <div class="profile-point">
+                <strong>Case Discipline</strong>
+                <span class="muted">Focused intake, factual review, and practical risk assessment before unnecessary exposure occurs.</span>
+              </div>
+              <div class="profile-point">
+                <strong>Courtroom Presence</strong>
+                <span class="muted">Clear advocacy for hearings, filings, settlement posture, and contested appearances.</span>
+              </div>
+              <div class="profile-point">
+                <strong>Investigative Awareness</strong>
+                <span class="muted">Guidance for interviews, warrant concerns, report issues, and pre-charge positioning.</span>
+              </div>
+              <div class="profile-point">
+                <strong>Client Protection</strong>
+                <span class="muted">Discreet handling for sensitive clients, organizations, and visibility-heavy matters.</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="request" aria-labelledby="request-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="kicker">Client Legal Request</div>
+            <h2 class="section-title" id="request-title">Submit an in-city request for legal review.</h2>
+          </div>
+          <p>
+            Use this form to request counsel for criminal, civil, business, hearing, investigative, or city-related matters. Provide only in-city case information relevant to review.
+          </p>
+        </div>
+
+        <div class="form-layout">
+          <aside class="disclaimer-card reveal" aria-label="Important notice">
+            <h3>Before you submit</h3>
+            <p>
+              This request portal is for in-city legal matters only. Keep your submission limited to character, case, incident, and city-facing information that supports review.
+            </p>
+            <ul class="disclaimer-list">
+              <li><span class="bullet"></span><span>Submitting a request does not automatically establish attorney-client representation.</span></li>
+              <li><span class="bullet"></span><span>Representation begins only after formal acceptance and direct confirmation from the office.</span></li>
+              <li><span class="bullet"></span><span>Do not provide out-of-character or real-life identifying information through this page.</span></li>
+              <li><span class="bullet"></span><span>For detained or actively questioned clients, keep the summary concise and fact-centered.</span></li>
+            </ul>
+            <div class="disclaimer-caption">
+              Office note: detailed, organized requests are reviewed faster than vague or emotional submissions. State what happened, who was involved, and what legal help is needed.
+            </div>
+          </aside>
+
+          <div class="form-shell reveal">
+            <div class="form-intro">
+              <div class="service-tag">Confidential Intake Request</div>
+              <p>
+                All fields below are structured for in-character use. Required fields are marked clearly. File attachment is available for case packets, citations, reports, or related evidence materials.
+              </p>
+            </div>
+
+            <form id="legalForm" novalidate>
+              <div class="form-grid">
+                <div class="field">
+                  <label for="characterName">Character Full Name *</label>
+                  <input id="characterName" name="characterName" type="text" placeholder="e.g., Adrian Mercer" required />
+                  <div class="field-error" data-error-for="characterName"></div>
+                </div>
+
+                <div class="field">
+                  <label for="alias">Preferred Alias / Street Name</label>
+                  <input id="alias" name="alias" type="text" placeholder="Known in-city alias, if applicable" />
+                  <div class="field-error" data-error-for="alias"></div>
+                </div>
+
+                <div class="field">
+                  <label for="stateId">State ID / Citizen ID *</label>
+                  <input id="stateId" name="stateId" type="text" placeholder="IC-48217" required />
+                  <div class="field-error" data-error-for="stateId"></div>
+                </div>
+
+                <div class="field">
+                  <label for="cityPhone">In-City Phone Number *</label>
+                  <input id="cityPhone" name="cityPhone" type="text" placeholder="555-0184" required />
+                  <div class="field-error" data-error-for="cityPhone"></div>
+                </div>
+
+                <div class="field">
+                  <label for="matterType">Legal Matter Type *</label>
+                  <select id="matterType" name="matterType" required>
+                    <option value="">Select matter type</option>
+                    <option>Criminal Defense</option>
+                    <option>Bail / Hold Assistance</option>
+                    <option>Court Representation</option>
+                    <option>Warrant / Investigation Guidance</option>
+                    <option>Civil Dispute</option>
+                    <option>Business / Contract Review</option>
+                    <option>Record Sealing / Expungement</option>
+                    <option>Government / City Matter</option>
+                    <option>Other</option>
+                  </select>
+                  <div class="field-error" data-error-for="matterType"></div>
+                </div>
+
+                <div class="field">
+                  <label for="status">Current Status *</label>
+                  <select id="status" name="status" required>
+                    <option value="">Select current status</option>
+                    <option>Detained</option>
+                    <option>Released</option>
+                    <option>Questioned</option>
+                    <option>Served</option>
+                    <option>Under Investigation</option>
+                    <option>Other</option>
+                  </select>
+                  <div class="field-error" data-error-for="status"></div>
+                </div>
+
+                <div class="field">
+                  <label for="incidentDate">Incident / Arrest Date *</label>
+                  <input id="incidentDate" name="incidentDate" type="date" required />
+                  <div class="field-error" data-error-for="incidentDate"></div>
+                </div>
+
+                <div class="field">
+                  <label for="incidentTime">Incident / Arrest Time</label>
+                  <input id="incidentTime" name="incidentTime" type="time" />
+                  <div class="field-error" data-error-for="incidentTime"></div>
+                </div>
+
+                <div class="field">
+                  <label for="incidentLocation">Incident Location *</label>
+                  <input id="incidentLocation" name="incidentLocation" type="text" placeholder="Street, district, business, or area in-city" required />
+                  <div class="field-error" data-error-for="incidentLocation"></div>
+                </div>
+
+                <div class="field">
+                  <label for="agency">Agency / Department Involved *</label>
+                  <input id="agency" name="agency" type="text" placeholder="Department, bureau, or office involved" required />
+                  <div class="field-error" data-error-for="agency"></div>
+                </div>
+
+                <div class="field">
+                  <label for="officers">Officer Name(s), if known</label>
+                  <input id="officers" name="officers" type="text" placeholder="Names, badge references, or units if known" />
+                  <div class="field-error" data-error-for="officers"></div>
+                </div>
+
+                <div class="field">
+                  <label for="caseNumber">Case Number / Report Number</label>
+                  <input id="caseNumber" name="caseNumber" type="text" placeholder="Reference number, if assigned" />
+                  <div class="field-error" data-error-for="caseNumber"></div>
+                </div>
+
+                <div class="field">
+                  <label for="hearingDate">Court Date / Hearing Date</label>
+                  <input id="hearingDate" name="hearingDate" type="date" />
+                  <div class="field-error" data-error-for="hearingDate"></div>
+                </div>
+
+                <div class="field">
+                  <label for="judge">Prosecutor / Judge, if known</label>
+                  <input id="judge" name="judge" type="text" placeholder="Assigned courtroom official, if known" />
+                  <div class="field-error" data-error-for="judge"></div>
+                </div>
+
+                <div class="field-full">
+                  <label for="charges">Charge(s) / Citation(s) / Complaint Details *</label>
+                  <textarea id="charges" name="charges" placeholder="List known charges, citations, complaint allegations, or official claims tied to the matter" required></textarea>
+                  <div class="field-error" data-error-for="charges"></div>
+                </div>
+
+                <div class="field-full">
+                  <label for="witnesses">Witnesses / Other Involved Parties</label>
+                  <textarea id="witnesses" name="witnesses" placeholder="List witnesses, complainants, organizations, or additional involved parties relevant to review"></textarea>
+                  <div class="field-error" data-error-for="witnesses"></div>
+                </div>
+
+                <div class="field-full">
+                  <label for="summary">Detailed Case Summary *</label>
+                  <textarea id="summary" name="summary" placeholder="Provide a concise, orderly summary of what happened, what contact has occurred, and what posture the matter is currently in" required></textarea>
+                  <div class="field-error" data-error-for="summary"></div>
+                </div>
+
+                <div class="field">
+                  <label for="requestedService">Requested Legal Service *</label>
+                  <select id="requestedService" name="requestedService" required>
+                    <option value="">Select requested service</option>
+                    <option>Immediate Defense Consultation</option>
+                    <option>Detention / Release Assistance</option>
+                    <option>Court Appearance Representation</option>
+                    <option>Investigation / Warrant Advisement</option>
+                    <option>Civil Dispute Review</option>
+                    <option>Business / Contract Consultation</option>
+                    <option>Record Relief Review</option>
+                    <option>General Legal Strategy Session</option>
+                  </select>
+                  <div class="field-error" data-error-for="requestedService"></div>
+                </div>
+
+                <div class="field">
+                  <label for="urgency">Urgency Level *</label>
+                  <select id="urgency" name="urgency" required>
+                    <option value="">Select urgency</option>
+                    <option>Routine</option>
+                    <option>Priority</option>
+                    <option>Time Sensitive</option>
+                    <option>Immediate</option>
+                  </select>
+                  <div class="field-error" data-error-for="urgency"></div>
+                </div>
+
+                <div class="field-full">
+                  <label for="contactMethod">Preferred In-City Contact Method *</label>
+                  <select id="contactMethod" name="contactMethod" required>
+                    <option value="">Select preferred contact method</option>
+                    <option>In-City Phone</option>
+                    <option>Secure Message</option>
+                    <option>Court / Government Contact Relay</option>
+                    <option>Office Callback</option>
+                    <option>Any Available Method</option>
+                  </select>
+                  <div class="field-error" data-error-for="contactMethod"></div>
+                </div>
+
+                <div class="field-full">
+                  <label>Supporting Materials</label>
+                  <div class="upload-box">
+                    <input id="files" name="files" type="file" multiple aria-label="Upload evidence or documents" />
+                    <div class="upload-note">
+                      <strong>Evidence / Documents</strong>
+                      <span>Attach reports, citations, hearing notices, contracts, or related case files.</span>
+                    </div>
+                    <div class="upload-pill" id="fileStatus">No files selected</div>
+                  </div>
+                </div>
+
+                <div class="field-full">
+                  <label>Case Review Priorities</label>
+                  <div class="check-grid">
+                    <label class="check-card">
+                      <input type="checkbox" name="priorities" value="Custody Status" />
+                      <span>Custody status or immediate release concern</span>
+                    </label>
+                    <label class="check-card">
+                      <input type="checkbox" name="priorities" value="Upcoming Court" />
+                      <span>Upcoming court date or hearing deadline</span>
+                    </label>
+                    <label class="check-card">
+                      <input type="checkbox" name="priorities" value="Investigation Contact" />
+                      <span>Investigator or agency contact already made</span>
+                    </label>
+                    <label class="check-card">
+                      <input type="checkbox" name="priorities" value="Business Exposure" />
+                      <span>Business, licensing, or reputation-sensitive exposure</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="field-full">
+                  <label class="check-card">
+                    <input id="noticeCheck" type="checkbox" required />
+                    <span>I confirm this submission contains in-city information only and understand that representation begins only after formal acceptance by the office. *</span>
+                  </label>
+                  <div class="field-error" data-error-for="noticeCheck"></div>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button class="btn btn-primary" type="submit">Submit Legal Request</button>
+                <button class="btn btn-secondary" type="reset">Clear Form</button>
+              </div>
+              <p class="fineprint">By submitting, you are requesting in-city review only. No out-of-character or real-life identifying information should be included anywhere in this request.</p>
+
+              <div class="success-state" id="successState" aria-live="polite">
+                <h4>Request received for office review.</h4>
+                <p>
+                  Your in-city legal request has been logged on the client review queue. Keep your line available, preserve any supporting records, and do not expand on the matter publicly until the office has made direct contact.
+                </p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="records" aria-labelledby="records-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="kicker">Office Records Desk</div>
+            <h2 class="section-title" id="records-title">Review, archive, export, and restore client matters.</h2>
+          </div>
+          <p>
+            This desk keeps submitted requests in the current browser, allows counsel to review each matter, and exports complete archives with the submitted attachment files included inside the ZIP.
+          </p>
+        </div>
+
+        <div class="records-layout">
+          <aside class="disclaimer-card reveal" aria-label="Records archive controls">
+            <h3>Records & archive controls</h3>
+            <p>
+              Submitted matters stay available in this browser until removed. Use export to create a complete office archive ZIP, or import a previously exported archive to restore records and evidence files.
+            </p>
+            <ul class="disclaimer-list">
+              <li><span class="bullet"></span><span>Exports include form records, office review notes, status changes, and stored attachments.</span></li>
+              <li><span class="bullet"></span><span>Imports restore records directly into the review queue on this page.</span></li>
+              <li><span class="bullet"></span><span>All logic is self-contained inside this HTML file with no outside library calls.</span></li>
+              <li><span class="bullet"></span><span>For long-term retention, export archives regularly rather than relying on browser storage alone.</span></li>
+            </ul>
+            <div class="records-actions">
+              <button class="btn btn-primary" type="button" id="exportArchiveBtn">Export Records ZIP</button>
+              <label class="btn btn-secondary" for="importArchiveInput">Import Records ZIP</label>
+              <input class="archive-input" id="importArchiveInput" type="file" accept=".zip,application/zip" />
+            </div>
+            <div class="archive-status" id="archiveStatus" aria-live="polite"></div>
+          </aside>
+
+          <div class="form-shell records-shell reveal">
+            <div class="records-toolbar">
+              <div class="filter-row">
+                <input id="recordsSearch" type="search" placeholder="Search by character, state ID, case number, agency, or matter type" aria-label="Search client records" />
+                <select id="recordsFilter" aria-label="Filter records by review status">
+                  <option value="all">All review statuses</option>
+                  <option value="New Intake">New Intake</option>
+                  <option value="Reviewing">Reviewing</option>
+                  <option value="Awaiting Client">Awaiting Client</option>
+                  <option value="Accepted">Accepted</option>
+                  <option value="Closed">Closed</option>
+                </select>
+                <div class="records-count" id="recordsCount">0 matters stored</div>
+              </div>
+            </div>
+
+            <div class="records-desk">
+              <div class="records-list-panel">
+                <div class="desk-heading">
+                  <h3>Client review queue</h3>
+                  <p>Submitted matters appear here for office review and archival handling.</p>
+                </div>
+                <div class="records-list" id="recordsList" aria-live="polite"></div>
+              </div>
+
+              <div class="record-detail-panel" id="recordDetail">
+                <div class="record-detail-empty">
+                  <div>
+                    <h3>No matter selected.</h3>
+                    <p>Select a client request from the review queue to examine the full intake, update its review status, add office notes, and open the archived attachments.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="faq" aria-labelledby="faq-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="kicker">Frequently Asked Questions</div>
+            <h2 class="section-title" id="faq-title">What clients usually need to know first.</h2>
+          </div>
+          <p>
+            Clear answers for common intake questions before formal representation begins.
+          </p>
+        </div>
+
+        <div class="faq-grid">
+          <div class="faq-card reveal">
+            <div class="faq-item open">
+              <button class="faq-button" type="button">
+                <span class="faq-q">How do I request a defense attorney?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-a">
+                Submit the legal request form with your character information, matter type, incident details, and a concise case summary. Organized facts usually allow faster office review than rushed or incomplete reports.
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-button" type="button">
+                <span class="faq-q">Can you represent me before court?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-a">
+                Yes. The office handles hearing preparation, filings, courtroom advocacy, and broader case strategy for clients who are formally accepted for representation.
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-button" type="button">
+                <span class="faq-q">What if I was questioned but not charged?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-a">
+                You should still request review. Pre-charge contact, investigation activity, or warrant-related exposure can affect what steps should be taken before a case becomes more complicated.
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-button" type="button">
+                <span class="faq-q">Do you handle warrants and investigations?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-a">
+                Yes. The office reviews warrant concerns, investigator contact, report posture, and response strategy where timing and communication discipline matter.
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-button" type="button">
+                <span class="faq-q">Can businesses or organizations retain legal services?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-a">
+                Yes. Business operators, firms, and organizations may request legal review for contracts, disputes, administrative issues, regulatory pressure, or reputation-sensitive matters.
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-button" type="button">
+                <span class="faq-q">When does representation begin?</span>
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-a">
+                Representation begins only after the office has formally accepted the matter and directly confirmed that it will proceed. Submission alone does not establish representation.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-panel reveal">
+        <div class="footer-grid">
+          <div>
+            <div class="brand-mark">Ibraham Goldstein Law Office</div>
+            <h3 class="side-title" style="margin-top:0.55rem;">City Attorney / Private Criminal Defense</h3>
+            <p>
+              Premium in-city legal representation for criminal defense, hearings, investigations, civil disputes, business review, and city-facing matters requiring professional control.
+            </p>
+          </div>
+          <div>
+            <div class="footer-heading">Navigation</div>
+            <ul>
+              <li><a href="#about">About the Office</a></li>
+              <li><a href="#services">Legal Services</a></li>
+              <li><a href="#counsel">Lead Counsel</a></li>
+              <li><a href="#request">Client Request Form</a></li>
+              <li><a href="#records">Office Records Desk</a></li>
+              <li><a href="#faq">Frequently Asked Questions</a></li>
+            </ul>
+          </div>
+          <div>
+            <div class="footer-heading">Office Notice</div>
+            <ul>
+              <li>In-city legal requests only.</li>
+              <li>No out-of-character or real-life identifying information.</li>
+              <li>Representation begins only after formal acceptance.</li>
+              <li>Keep submissions accurate, concise, and case-focused.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-note">
+          This office portal is intended solely for immersive in-city legal matters. Submitting a request does not, by itself, create attorney-client representation or guarantee office engagement.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    revealEls.forEach((el) => revealObserver.observe(el));
+
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach((item) => {
+      const btn = item.querySelector('.faq-button');
+      btn.addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+        faqItems.forEach((entry) => entry.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+
+    const form = document.getElementById('legalForm');
+    const successState = document.getElementById('successState');
+    const fileInput = document.getElementById('files');
+    const fileStatus = document.getElementById('fileStatus');
+    const exportArchiveBtn = document.getElementById('exportArchiveBtn');
+    const importArchiveInput = document.getElementById('importArchiveInput');
+    const archiveStatus = document.getElementById('archiveStatus');
+    const recordsListEl = document.getElementById('recordsList');
+    const recordDetailEl = document.getElementById('recordDetail');
+    const recordsSearchInput = document.getElementById('recordsSearch');
+    const recordsFilterSelect = document.getElementById('recordsFilter');
+    const recordsCountEl = document.getElementById('recordsCount');
+
+    const DB_NAME = 'ibraham_goldstein_law_office_db';
+    const STORE_NAME = 'client_records';
+    const RECORD_STATUS_OPTIONS = ['New Intake', 'Reviewing', 'Awaiting Client', 'Accepted', 'Closed'];
+    const requiredIds = [
+      'characterName',
+      'stateId',
+      'cityPhone',
+      'matterType',
+      'status',
+      'incidentDate',
+      'incidentLocation',
+      'agency',
+      'charges',
+      'summary',
+      'requestedService',
+      'urgency',
+      'contactMethod',
+      'noticeCheck'
+    ];
+
+    const fieldDefinitions = [
+      ['alias', 'Preferred Alias / Street Name'],
+      ['stateId', 'State ID / Citizen ID'],
+      ['cityPhone', 'In-City Phone Number'],
+      ['matterType', 'Legal Matter Type'],
+      ['status', 'Current Status'],
+      ['requestedService', 'Requested Legal Service'],
+      ['urgency', 'Urgency Level'],
+      ['contactMethod', 'Preferred In-City Contact Method'],
+      ['incidentDate', 'Incident / Arrest Date'],
+      ['incidentTime', 'Incident / Arrest Time'],
+      ['incidentLocation', 'Incident Location'],
+      ['agency', 'Agency / Department Involved'],
+      ['officers', 'Officer Name(s)'],
+      ['caseNumber', 'Case / Report Number'],
+      ['hearingDate', 'Court / Hearing Date'],
+      ['judge', 'Prosecutor / Judge'],
+      ['charges', 'Charge(s) / Citation(s) / Complaint Details'],
+      ['witnesses', 'Witnesses / Other Involved Parties'],
+      ['summary', 'Detailed Case Summary']
+    ];
+
+    let internalReset = false;
+    let dbPromise = null;
+    let recordsCache = [];
+    let activeRecordId = null;
+    let currentAttachmentUrls = [];
+
+    function getErrorContainer(id) {
+      return document.querySelector(`[data-error-for="${id}"]`);
+    }
+
+    function setFieldError(field, message) {
+      field.classList.add('error');
+      field.setAttribute('aria-invalid', 'true');
+      const errorEl = getErrorContainer(field.id);
+      if (errorEl) errorEl.textContent = message;
+    }
+
+    function clearFieldError(field) {
+      field.classList.remove('error');
+      field.removeAttribute('aria-invalid');
+      const errorEl = getErrorContainer(field.id);
+      if (errorEl) errorEl.textContent = '';
+    }
+
+    function validateField(field) {
+      if (!field) return true;
+      const type = field.type;
+      const value = type === 'checkbox' ? field.checked : field.value.trim();
+
+      if (field.hasAttribute('required')) {
+        const missing = type === 'checkbox' ? !field.checked : !value;
+        if (missing) {
+          const message = type === 'checkbox'
+            ? 'You must confirm the office notice before submitting.'
+            : 'This field is required before the request can be logged.';
+          setFieldError(field, message);
+          return false;
+        }
+      }
+
+      if (field.id === 'cityPhone' && value) {
+        const pattern = /^[0-9A-Za-z\- ]{3,20}$/;
+        if (!pattern.test(value)) {
+          setFieldError(field, 'Use a valid in-city phone reference.');
+          return false;
+        }
+      }
+
+      if (field.id === 'stateId' && value) {
+        const pattern = /^[A-Za-z0-9\-#]{3,24}$/;
+        if (!pattern.test(value)) {
+          setFieldError(field, 'Use a valid in-city state or citizen ID reference.');
+          return false;
+        }
+      }
+
+      clearFieldError(field);
+      return true;
+    }
+
+    requiredIds.forEach((id) => {
+      const field = document.getElementById(id);
+      if (!field) return;
+      const eventName = field.type === 'checkbox' ? 'change' : 'input';
+      field.addEventListener(eventName, () => validateField(field));
+    });
+
+    fileInput.addEventListener('change', () => {
+      const count = fileInput.files.length;
+      fileStatus.textContent = count === 0
+        ? 'No files selected'
+        : count === 1
+          ? fileInput.files[0].name
+          : `${count} files selected`;
+    });
+
+    recordsSearchInput.addEventListener('input', () => renderRecordsDesk());
+    recordsFilterSelect.addEventListener('change', () => renderRecordsDesk());
+
+    exportArchiveBtn.addEventListener('click', async () => {
+      try {
+        const records = await getAllRecords();
+        if (!records.length) {
+          setArchiveStatus('No client matters are stored yet. Submit a request before exporting an archive.', false);
+          return;
+        }
+
+        setArchiveStatus('Building records archive ZIP…', false);
+        const entries = [];
+        const manifest = {
+          format: 'IGLO_RECORD_ARCHIVE',
+          version: 2,
+          exportedAt: new Date().toISOString(),
+          recordCount: records.length
+        };
+        entries.push({
+          name: 'office-archive.json',
+          data: JSON.stringify(manifest, null, 2)
+        });
+
+        records.forEach((record) => {
+          const exportedRecord = {
+            ...record,
+            attachments: record.attachments.map((attachment, index) => {
+              const archivePath = `attachments/${record.id}/${String(index + 1).padStart(2, '0')}-${sanitizeFileName(attachment.name, index)}`;
+              entries.push({
+                name: archivePath,
+                data: uint8ArrayFromBuffer(attachment.buffer)
+              });
+              return {
+                id: attachment.id,
+                name: attachment.name,
+                type: attachment.type,
+                size: attachment.size,
+                lastModified: attachment.lastModified,
+                path: archivePath
+              };
+            })
+          };
+
+          entries.push({
+            name: `records/${record.id}.json`,
+            data: JSON.stringify(exportedRecord, null, 2)
+          });
+        });
+
+        const zipBlob = createStoredZip(entries);
+        const stamp = new Date().toISOString().replace(/[:T]/g, '-').slice(0, 16);
+        downloadBlob(zipBlob, `ibraham-goldstein-records-${stamp}.zip`);
+        setArchiveStatus(`Archive exported successfully with ${records.length} stored matter${records.length === 1 ? '' : 's'} and embedded attachment files.`, false);
+      } catch (error) {
+        console.error(error);
+        setArchiveStatus('Archive export failed. Try again in this browser session.', true);
+      }
+    });
+
+    importArchiveInput.addEventListener('change', async () => {
+      const file = importArchiveInput.files && importArchiveInput.files[0];
+      if (!file) return;
+
+      try {
+        setArchiveStatus('Reading archive ZIP…', false);
+        const entries = await parseZipEntries(new Uint8Array(await file.arrayBuffer()));
+        const manifestEntry = entries.get('office-archive.json');
+        if (manifestEntry) {
+          const manifest = JSON.parse(decodeText(manifestEntry.data));
+          if (manifest.format !== 'IGLO_RECORD_ARCHIVE') {
+            throw new Error('Unsupported archive manifest.');
+          }
+        }
+
+        const recordEntryNames = Array.from(entries.keys()).filter((name) => name.startsWith('records/') && name.endsWith('.json'));
+        if (!recordEntryNames.length) {
+          throw new Error('No stored records were found in this archive.');
+        }
+
+        let importedCount = 0;
+        for (const name of recordEntryNames) {
+          const parsed = JSON.parse(decodeText(entries.get(name).data));
+          const restoredAttachments = Array.isArray(parsed.attachments)
+            ? parsed.attachments.map((attachment, index) => {
+                const attachmentEntry = attachment.path ? entries.get(attachment.path) : null;
+                if (!attachmentEntry) {
+                  return normalizeAttachment({
+                    ...attachment,
+                    name: attachment.name || `attachment-${index + 1}`,
+                    buffer: new ArrayBuffer(0)
+                  });
+                }
+                return normalizeAttachment({
+                  ...attachment,
+                  buffer: cloneArrayBuffer(attachmentEntry.data)
+                });
+              })
+            : [];
+
+          const normalizedRecord = normalizeRecord({
+            ...parsed,
+            attachments: restoredAttachments
+          });
+
+          await putRecord(normalizedRecord);
+          importedCount += 1;
+        }
+
+        await refreshRecords(importedCount > 0);
+        setArchiveStatus(`Archive imported successfully. ${importedCount} matter${importedCount === 1 ? '' : 's'} restored to the review queue.`, false);
+      } catch (error) {
+        console.error(error);
+        setArchiveStatus('Archive import failed. Use a ZIP previously exported by this office portal.', true);
+      } finally {
+        importArchiveInput.value = '';
+      }
+    });
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      let valid = true;
+
+      requiredIds.forEach((id) => {
+        const field = document.getElementById(id);
+        if (field && !validateField(field)) valid = false;
+      });
+
+      if (!valid) {
+        const firstError = form.querySelector('.error');
+        if (firstError && typeof firstError.focus === 'function') {
+          firstError.focus({ preventScroll: false });
+        }
+        successState.classList.remove('active');
+        return;
+      }
+
+      try {
+        const record = await buildRecordFromForm();
+        await putRecord(record);
+        await refreshRecords(true);
+        activeRecordId = record.id;
+        renderRecordsDesk();
+        successState.classList.add('active');
+        successState.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        setArchiveStatus(`Client request logged for ${record.characterName}. The matter is now available under Office Records Desk.`, false);
+
+        internalReset = true;
+        form.reset();
+        fileStatus.textContent = 'No files selected';
+        document.querySelectorAll('.field-error').forEach((el) => {
+          el.textContent = '';
+        });
+        document.querySelectorAll('.error').forEach((el) => {
+          el.classList.remove('error');
+          el.removeAttribute('aria-invalid');
+        });
+        window.setTimeout(() => {
+          internalReset = false;
+        }, 0);
+      } catch (error) {
+        console.error(error);
+        successState.classList.remove('active');
+        setArchiveStatus('The request could not be logged locally in this browser. Try again and keep the browser storage permission enabled.', true);
+      }
+    });
+
+    form.addEventListener('reset', () => {
+      window.setTimeout(() => {
+        fileStatus.textContent = 'No files selected';
+        if (!internalReset) successState.classList.remove('active');
+        document.querySelectorAll('.field-error').forEach((el) => {
+          el.textContent = '';
+        });
+        document.querySelectorAll('.error').forEach((el) => {
+          el.classList.remove('error');
+          el.removeAttribute('aria-invalid');
+        });
+      }, 0);
+    });
+
+    window.addEventListener('beforeunload', revokeAttachmentUrls);
+
+    init();
+
+    async function init() {
+      try {
+        await refreshRecords(false);
+        setArchiveStatus('Records desk ready. New client matters submitted on this page will be stored locally in this browser.', false);
+      } catch (error) {
+        console.error(error);
+        setArchiveStatus('The records desk could not access browser storage. Archive features may not function in this environment.', true);
+      }
+    }
+
+    async function buildRecordFromForm() {
+      const attachments = await Promise.all(Array.from(fileInput.files).map(readAttachmentFile));
+      const priorities = Array.from(form.querySelectorAll('input[name="priorities"]:checked')).map((input) => input.value);
+      const nowIso = new Date().toISOString();
+
+      const record = {
+        id: generateId(),
+        submittedAt: nowIso,
+        updatedAt: nowIso,
+        reviewStatus: 'New Intake',
+        officeNotes: '',
+        characterName: getFieldValue('characterName'),
+        fields: {
+          characterName: getFieldValue('characterName'),
+          alias: getFieldValue('alias'),
+          stateId: getFieldValue('stateId'),
+          cityPhone: getFieldValue('cityPhone'),
+          matterType: getFieldValue('matterType'),
+          status: getFieldValue('status'),
+          incidentDate: getFieldValue('incidentDate'),
+          incidentTime: getFieldValue('incidentTime'),
+          incidentLocation: getFieldValue('incidentLocation'),
+          agency: getFieldValue('agency'),
+          officers: getFieldValue('officers'),
+          caseNumber: getFieldValue('caseNumber'),
+          hearingDate: getFieldValue('hearingDate'),
+          judge: getFieldValue('judge'),
+          charges: getFieldValue('charges'),
+          witnesses: getFieldValue('witnesses'),
+          summary: getFieldValue('summary'),
+          requestedService: getFieldValue('requestedService'),
+          urgency: getFieldValue('urgency'),
+          contactMethod: getFieldValue('contactMethod')
+        },
+        priorities,
+        noticeConfirmed: document.getElementById('noticeCheck').checked,
+        attachments
+      };
+
+      return normalizeRecord(record);
+    }
+
+    function getFieldValue(id) {
+      const field = document.getElementById(id);
+      return field ? field.value.trim() : '';
+    }
+
+    async function readAttachmentFile(file, index) {
+      const buffer = await file.arrayBuffer();
+      return normalizeAttachment({
+        id: generateId(`file-${index + 1}`),
+        name: file.name || `attachment-${index + 1}`,
+        type: file.type || 'application/octet-stream',
+        size: file.size || buffer.byteLength || 0,
+        lastModified: file.lastModified || Date.now(),
+        buffer
+      });
+    }
+
+    function normalizeRecord(record) {
+      const normalizedFields = record && record.fields ? record.fields : {
+        characterName: record.characterName || '',
+        alias: record.alias || '',
+        stateId: record.stateId || '',
+        cityPhone: record.cityPhone || '',
+        matterType: record.matterType || '',
+        status: record.status || '',
+        incidentDate: record.incidentDate || '',
+        incidentTime: record.incidentTime || '',
+        incidentLocation: record.incidentLocation || '',
+        agency: record.agency || '',
+        officers: record.officers || '',
+        caseNumber: record.caseNumber || '',
+        hearingDate: record.hearingDate || '',
+        judge: record.judge || '',
+        charges: record.charges || '',
+        witnesses: record.witnesses || '',
+        summary: record.summary || '',
+        requestedService: record.requestedService || '',
+        urgency: record.urgency || '',
+        contactMethod: record.contactMethod || ''
+      };
+
+      return {
+        id: record.id || generateId(),
+        submittedAt: record.submittedAt || new Date().toISOString(),
+        updatedAt: record.updatedAt || record.submittedAt || new Date().toISOString(),
+        reviewStatus: RECORD_STATUS_OPTIONS.includes(record.reviewStatus) ? record.reviewStatus : 'New Intake',
+        officeNotes: typeof record.officeNotes === 'string' ? record.officeNotes : '',
+        characterName: normalizedFields.characterName || record.characterName || 'Unnamed Character',
+        fields: normalizedFields,
+        priorities: Array.isArray(record.priorities) ? record.priorities.filter(Boolean) : [],
+        noticeConfirmed: Boolean(record.noticeConfirmed),
+        attachments: Array.isArray(record.attachments) ? record.attachments.map((attachment) => normalizeAttachment(attachment)) : []
+      };
+    }
+
+    function normalizeAttachment(attachment) {
+      let buffer = attachment && attachment.buffer !== undefined ? attachment.buffer : attachment && attachment.data !== undefined ? attachment.data : new ArrayBuffer(0);
+
+      if (buffer instanceof Uint8Array) {
+        buffer = cloneArrayBuffer(buffer);
+      } else if (Array.isArray(buffer)) {
+        buffer = new Uint8Array(buffer).buffer;
+      } else if (!(buffer instanceof ArrayBuffer)) {
+        buffer = new ArrayBuffer(0);
+      }
+
+      return {
+        id: attachment.id || generateId('attachment'),
+        name: attachment.name || 'attachment.bin',
+        type: attachment.type || 'application/octet-stream',
+        size: Number.isFinite(attachment.size) ? Number(attachment.size) : buffer.byteLength,
+        lastModified: Number.isFinite(attachment.lastModified) ? Number(attachment.lastModified) : Date.now(),
+        buffer
+      };
+    }
+
+    function generateId(prefix = 'record') {
+      if (window.crypto && typeof window.crypto.randomUUID === 'function') {
+        return `${prefix}-${window.crypto.randomUUID()}`;
+      }
+      return `${prefix}-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`;
+    }
+
+    function setArchiveStatus(message, isError) {
+      archiveStatus.textContent = message || '';
+      archiveStatus.style.color = isError ? '#f0b6b6' : '';
+    }
+
+    async function refreshRecords(preferLatest) {
+      recordsCache = (await getAllRecords()).sort((a, b) => {
+        return new Date(b.submittedAt).getTime() - new Date(a.submittedAt).getTime();
+      });
+
+      const filteredIds = new Set(getFilteredRecords(recordsCache).map((record) => record.id));
+      if (preferLatest && recordsCache.length) {
+        activeRecordId = recordsCache[0].id;
+      } else if (activeRecordId && !recordsCache.some((record) => record.id === activeRecordId)) {
+        activeRecordId = recordsCache[0] ? recordsCache[0].id : null;
+      } else if (activeRecordId && !filteredIds.has(activeRecordId)) {
+        activeRecordId = getFilteredRecords(recordsCache)[0] ? getFilteredRecords(recordsCache)[0].id : null;
+      } else if (!activeRecordId && recordsCache.length) {
+        activeRecordId = recordsCache[0].id;
+      }
+
+      renderRecordsDesk();
+    }
+
+    function getFilteredRecords(records) {
+      const query = recordsSearchInput.value.trim().toLowerCase();
+      const filter = recordsFilterSelect.value;
+
+      return records.filter((record) => {
+        const matchesFilter = filter === 'all' || record.reviewStatus === filter;
+        if (!matchesFilter) return false;
+
+        if (!query) return true;
+        const haystack = [
+          record.characterName,
+          record.fields.alias,
+          record.fields.stateId,
+          record.fields.caseNumber,
+          record.fields.agency,
+          record.fields.matterType,
+          record.fields.requestedService,
+          record.fields.summary
+        ].join(' ').toLowerCase();
+
+        return haystack.includes(query);
+      });
+    }
+
+    function renderRecordsDesk() {
+      const filteredRecords = getFilteredRecords(recordsCache);
+      recordsCountEl.textContent = `${filteredRecords.length} matter${filteredRecords.length === 1 ? '' : 's'} stored`;
+
+      if (activeRecordId && !filteredRecords.some((record) => record.id === activeRecordId)) {
+        activeRecordId = filteredRecords[0] ? filteredRecords[0].id : null;
+      }
+
+      renderRecordsList(filteredRecords);
+      renderRecordDetail(filteredRecords.find((record) => record.id === activeRecordId) || null);
+    }
+
+    function renderRecordsList(records) {
+      if (!records.length) {
+        recordsListEl.innerHTML = '<div class="empty-records">No stored matters match the current search or review-status filter.</div>';
+        return;
+      }
+
+      recordsListEl.innerHTML = records.map((record) => {
+        const isActive = record.id === activeRecordId;
+        const attachmentCount = record.attachments.length;
+        return `
+          <button class="record-card ${isActive ? 'active' : ''}" type="button" data-record-id="${escapeHtml(record.id)}">
+            <div class="record-card-top">
+              <div>
+                <div class="record-card-title">${escapeHtml(record.characterName)}</div>
+                <div class="record-card-subtitle">${escapeHtml(record.fields.matterType || 'Unspecified Matter')}</div>
+              </div>
+              <span class="queue-badge ${statusClass(record.reviewStatus)}">${escapeHtml(record.reviewStatus)}</span>
+            </div>
+            <div class="record-card-bottom">
+              <div class="record-card-meta">
+                State ID: ${escapeHtml(record.fields.stateId || '—')}<br />
+                Submitted: ${escapeHtml(formatDateTime(record.submittedAt))}
+              </div>
+              <div class="record-card-meta">
+                ${attachmentCount} attachment${attachmentCount === 1 ? '' : 's'}<br />
+                ${escapeHtml(record.fields.urgency || 'Normal review')}
+              </div>
+            </div>
+          </button>
+        `;
+      }).join('');
+
+      recordsListEl.querySelectorAll('[data-record-id]').forEach((button) => {
+        button.addEventListener('click', () => {
+          activeRecordId = button.dataset.recordId;
+          renderRecordsDesk();
+        });
+      });
+    }
+
+    function renderRecordDetail(record) {
+      revokeAttachmentUrls();
+
+      if (!record) {
+        recordDetailEl.innerHTML = `
+          <div class="record-detail-empty">
+            <div>
+              <h3>No matter selected.</h3>
+              <p>Select a stored request from the review queue to review the intake, open attachments, and update office notes.</p>
+            </div>
+          </div>
+        `;
+        return;
+      }
+
+      const statusOptions = RECORD_STATUS_OPTIONS.map((status) => {
+        return `<option value="${escapeAttribute(status)}" ${status === record.reviewStatus ? 'selected' : ''}>${escapeHtml(status)}</option>`;
+      }).join('');
+
+      const prioritiesMarkup = record.priorities.length
+        ? `<div class="record-chip-row">${record.priorities.map((priority) => `<span class="record-chip">${escapeHtml(priority)}</span>`).join('')}</div>`
+        : '<span class="muted">No review priorities were marked on the submission.</span>';
+
+      const attachmentsMarkup = record.attachments.length
+        ? `<div class="attachments-list">${record.attachments.map((attachment, index) => {
+            const href = createAttachmentUrl(attachment);
+            return `
+              <div class="attachment-item">
+                <div>
+                  <strong>${escapeHtml(attachment.name)}</strong>
+                  <span>${escapeHtml(formatFileSize(attachment.size))} · ${escapeHtml(attachment.type || 'application/octet-stream')}</span>
+                </div>
+                <a class="btn btn-secondary" href="${href}" download="${escapeAttribute(attachment.name || `attachment-${index + 1}`)}">Open Attachment</a>
+              </div>
+            `;
+          }).join('')}</div>`
+        : '<span class="muted">No attachment files were included with this request.</span>';
+
+      recordDetailEl.innerHTML = `
+        <div class="record-detail-header">
+          <div>
+            <div class="record-detail-title">${escapeHtml(record.characterName)}</div>
+            <div class="record-detail-subtitle">${escapeHtml(record.fields.matterType || 'Matter type pending')} · ${escapeHtml(record.fields.requestedService || 'Service not specified')}</div>
+          </div>
+          <span class="queue-badge ${statusClass(record.reviewStatus)}">${escapeHtml(record.reviewStatus)}</span>
+        </div>
+
+        <div class="record-detail-meta">
+          ${renderLine('Submitted', formatDateTime(record.submittedAt))}
+          ${renderLine('State ID', record.fields.stateId || '—')}
+          ${renderLine('Attachment Count', `${record.attachments.length}`)}
+        </div>
+
+        <div class="record-detail-section">
+          <h4>Office review controls</h4>
+          <div class="record-admin-grid">
+            <div class="field">
+              <label for="recordStatusSelect">Review Status</label>
+              <select id="recordStatusSelect">${statusOptions}</select>
+            </div>
+            <div class="field record-note-field">
+              <label for="recordNotes">Private Office Notes</label>
+              <textarea id="recordNotes" placeholder="Record strategy notes, contact attempts, filing posture, or review findings for internal office use only.">${escapeHtml(record.officeNotes || '')}</textarea>
+            </div>
+          </div>
+          <div class="detail-actions">
+            <button class="btn btn-primary" type="button" id="saveRecordBtn">Save Review Notes</button>
+            <button class="btn btn-secondary" type="button" id="deleteRecordBtn">Delete Matter</button>
+          </div>
+        </div>
+
+        <div class="record-detail-section">
+          <h4>Client & matter overview</h4>
+          <div class="record-grid">
+            ${renderLine('Alias / Street Name', record.fields.alias || '—')}
+            ${renderLine('In-City Phone', record.fields.cityPhone || '—')}
+            ${renderLine('Current Status', record.fields.status || '—')}
+            ${renderLine('Urgency', record.fields.urgency || '—')}
+            ${renderLine('Preferred Contact Method', record.fields.contactMethod || '—')}
+            ${renderLine('Case / Report Number', record.fields.caseNumber || '—')}
+          </div>
+        </div>
+
+        <div class="record-detail-section">
+          <h4>Incident & court posture</h4>
+          <div class="record-grid">
+            ${renderLine('Incident Date', formatDateOnly(record.fields.incidentDate))}
+            ${renderLine('Incident Time', record.fields.incidentTime || '—')}
+            ${renderLine('Incident Location', record.fields.incidentLocation || '—')}
+            ${renderLine('Agency / Department', record.fields.agency || '—')}
+            ${renderLine('Officer Name(s)', record.fields.officers || '—')}
+            ${renderLine('Court / Hearing Date', formatDateOnly(record.fields.hearingDate))}
+            ${renderLine('Prosecutor / Judge', record.fields.judge || '—')}
+          </div>
+        </div>
+
+        <div class="record-detail-section">
+          <h4>Charge details</h4>
+          <div class="record-line">
+            <p class="record-detail-text">${escapeHtml(record.fields.charges || '—')}</p>
+          </div>
+        </div>
+
+        <div class="record-detail-section">
+          <h4>Witnesses / other parties</h4>
+          <div class="record-line">
+            <p class="record-detail-text">${escapeHtml(record.fields.witnesses || '—')}</p>
+          </div>
+        </div>
+
+        <div class="record-detail-section">
+          <h4>Detailed case summary</h4>
+          <div class="record-line">
+            <p class="record-detail-text">${escapeHtml(record.fields.summary || '—')}</p>
+          </div>
+        </div>
+
+        <div class="record-detail-section">
+          <h4>Review priorities</h4>
+          ${prioritiesMarkup}
+        </div>
+
+        <div class="record-detail-section">
+          <h4>Archived attachments</h4>
+          ${attachmentsMarkup}
+        </div>
+      `;
+
+      const statusSelect = document.getElementById('recordStatusSelect');
+      const notesField = document.getElementById('recordNotes');
+      const saveButton = document.getElementById('saveRecordBtn');
+      const deleteButton = document.getElementById('deleteRecordBtn');
+
+      saveButton.addEventListener('click', async () => {
+        try {
+          const updatedRecord = normalizeRecord({
+            ...record,
+            reviewStatus: statusSelect.value,
+            officeNotes: notesField.value.trim(),
+            updatedAt: new Date().toISOString()
+          });
+          await putRecord(updatedRecord);
+          await refreshRecords(false);
+          activeRecordId = updatedRecord.id;
+          renderRecordsDesk();
+          setArchiveStatus(`Office review details saved for ${updatedRecord.characterName}.`, false);
+        } catch (error) {
+          console.error(error);
+          setArchiveStatus('Unable to save the updated office review details.', true);
+        }
+      });
+
+      deleteButton.addEventListener('click', async () => {
+        const approved = window.confirm('Delete this stored matter from the local records desk? This action removes the form and its archived attachments from this browser.');
+        if (!approved) return;
+
+        try {
+          await deleteRecord(record.id);
+          const wasActive = activeRecordId === record.id;
+          if (wasActive) activeRecordId = null;
+          await refreshRecords(false);
+          setArchiveStatus(`The stored matter for ${record.characterName} was removed from this browser.`, false);
+        } catch (error) {
+          console.error(error);
+          setArchiveStatus('Unable to delete the stored matter from the records desk.', true);
+        }
+      });
+    }
+
+    function renderLine(label, value) {
+      return `
+        <div class="record-line">
+          <strong>${escapeHtml(label)}</strong>
+          <span>${escapeHtml(value || '—')}</span>
+        </div>
+      `;
+    }
+
+    function formatDateTime(value) {
+      if (!value) return '—';
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) return value;
+      return date.toLocaleString([], { dateStyle: 'medium', timeStyle: 'short' });
+    }
+
+    function formatDateOnly(value) {
+      if (!value) return '—';
+      const date = new Date(`${value}T00:00:00`);
+      if (Number.isNaN(date.getTime())) return value;
+      return date.toLocaleDateString([], { dateStyle: 'medium' });
+    }
+
+    function formatFileSize(bytes) {
+      const size = Number(bytes) || 0;
+      if (size < 1024) return `${size} B`;
+      const units = ['KB', 'MB', 'GB'];
+      let value = size / 1024;
+      let unitIndex = 0;
+      while (value >= 1024 && unitIndex < units.length - 1) {
+        value /= 1024;
+        unitIndex += 1;
+      }
+      return `${value.toFixed(value >= 10 || unitIndex === 0 ? 1 : 2)} ${units[unitIndex]}`;
+    }
+
+    function statusClass(status) {
+      return `status-${String(status || '').toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+    }
+
+    function escapeHtml(value) {
+      return String(value == null ? '' : value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function escapeAttribute(value) {
+      return escapeHtml(value).replace(/`/g, '&#96;');
+    }
+
+    function sanitizeFileName(name, index) {
+      const base = String(name || `attachment-${index + 1}`).replace(/[\\\/:*?"<>|\u0000-\u001F]+/g, '-').trim();
+      return base || `attachment-${index + 1}`;
+    }
+
+    function createAttachmentUrl(attachment) {
+      const blob = new Blob([attachment.buffer], { type: attachment.type || 'application/octet-stream' });
+      const url = URL.createObjectURL(blob);
+      currentAttachmentUrls.push(url);
+      return url;
+    }
+
+    function revokeAttachmentUrls() {
+      currentAttachmentUrls.forEach((url) => URL.revokeObjectURL(url));
+      currentAttachmentUrls = [];
+    }
+
+    function downloadBlob(blob, fileName) {
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = fileName;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+    }
+
+    function uint8ArrayFromBuffer(buffer) {
+      if (buffer instanceof Uint8Array) return new Uint8Array(buffer);
+      if (buffer instanceof ArrayBuffer) return new Uint8Array(buffer);
+      return new Uint8Array();
+    }
+
+    function cloneArrayBuffer(data) {
+      const bytes = data instanceof Uint8Array ? data : new Uint8Array(data);
+      return bytes.slice().buffer;
+    }
+
+    function encodeText(text) {
+      return new TextEncoder().encode(String(text));
+    }
+
+    function decodeText(bytes) {
+      return new TextDecoder().decode(bytes);
+    }
+
+    function openDb() {
+      if (!('indexedDB' in window)) {
+        return Promise.reject(new Error('IndexedDB is not available.'));
+      }
+
+      if (dbPromise) return dbPromise;
+
+      dbPromise = new Promise((resolve, reject) => {
+        const request = indexedDB.open(DB_NAME, 1);
+
+        request.onupgradeneeded = () => {
+          const db = request.result;
+          if (!db.objectStoreNames.contains(STORE_NAME)) {
+            db.createObjectStore(STORE_NAME, { keyPath: 'id' });
+          }
+        };
+
+        request.onsuccess = () => resolve(request.result);
+        request.onerror = () => reject(request.error || new Error('Unable to open the records database.'));
+      });
+
+      return dbPromise;
+    }
+
+    async function getAllRecords() {
+      const db = await openDb();
+      return new Promise((resolve, reject) => {
+        const transaction = db.transaction(STORE_NAME, 'readonly');
+        const store = transaction.objectStore(STORE_NAME);
+        const request = store.getAll();
+
+        request.onsuccess = () => {
+          resolve((request.result || []).map((record) => normalizeRecord(record)));
+        };
+        request.onerror = () => reject(request.error || new Error('Unable to read stored records.'));
+      });
+    }
+
+    async function putRecord(record) {
+      const db = await openDb();
+      const normalized = normalizeRecord(record);
+      return new Promise((resolve, reject) => {
+        const transaction = db.transaction(STORE_NAME, 'readwrite');
+        const store = transaction.objectStore(STORE_NAME);
+        const request = store.put(normalized);
+
+        request.onsuccess = () => resolve(normalized);
+        request.onerror = () => reject(request.error || new Error('Unable to save the record.'));
+      });
+    }
+
+    async function deleteRecord(recordId) {
+      const db = await openDb();
+      return new Promise((resolve, reject) => {
+        const transaction = db.transaction(STORE_NAME, 'readwrite');
+        const store = transaction.objectStore(STORE_NAME);
+        const request = store.delete(recordId);
+
+        request.onsuccess = () => resolve();
+        request.onerror = () => reject(request.error || new Error('Unable to delete the record.'));
+      });
+    }
+
+    function createStoredZip(entries) {
+      const localFiles = [];
+      const centralDirectory = [];
+      let offset = 0;
+
+      entries.forEach((entry) => {
+        const nameBytes = encodeText(entry.name);
+        const dataBytes = typeof entry.data === 'string' ? encodeText(entry.data) : uint8ArrayFromBuffer(entry.data);
+        const crc = crc32(dataBytes);
+        const stamp = dosDateTime(new Date());
+
+        const localHeader = new Uint8Array(30 + nameBytes.length + dataBytes.length);
+        const localView = new DataView(localHeader.buffer);
+        localView.setUint32(0, 0x04034b50, true);
+        localView.setUint16(4, 20, true);
+        localView.setUint16(6, 0x0800, true);
+        localView.setUint16(8, 0, true);
+        localView.setUint16(10, stamp.time, true);
+        localView.setUint16(12, stamp.date, true);
+        localView.setUint32(14, crc >>> 0, true);
+        localView.setUint32(18, dataBytes.length, true);
+        localView.setUint32(22, dataBytes.length, true);
+        localView.setUint16(26, nameBytes.length, true);
+        localView.setUint16(28, 0, true);
+        localHeader.set(nameBytes, 30);
+        localHeader.set(dataBytes, 30 + nameBytes.length);
+        localFiles.push(localHeader);
+
+        const centralHeader = new Uint8Array(46 + nameBytes.length);
+        const centralView = new DataView(centralHeader.buffer);
+        centralView.setUint32(0, 0x02014b50, true);
+        centralView.setUint16(4, 20, true);
+        centralView.setUint16(6, 20, true);
+        centralView.setUint16(8, 0x0800, true);
+        centralView.setUint16(10, 0, true);
+        centralView.setUint16(12, stamp.time, true);
+        centralView.setUint16(14, stamp.date, true);
+        centralView.setUint32(16, crc >>> 0, true);
+        centralView.setUint32(20, dataBytes.length, true);
+        centralView.setUint32(24, dataBytes.length, true);
+        centralView.setUint16(28, nameBytes.length, true);
+        centralView.setUint16(30, 0, true);
+        centralView.setUint16(32, 0, true);
+        centralView.setUint16(34, 0, true);
+        centralView.setUint16(36, 0, true);
+        centralView.setUint32(38, 0, true);
+        centralView.setUint32(42, offset, true);
+        centralHeader.set(nameBytes, 46);
+        centralDirectory.push(centralHeader);
+
+        offset += localHeader.length;
+      });
+
+      const centralSize = centralDirectory.reduce((sum, item) => sum + item.length, 0);
+      const end = new Uint8Array(22);
+      const endView = new DataView(end.buffer);
+      endView.setUint32(0, 0x06054b50, true);
+      endView.setUint16(4, 0, true);
+      endView.setUint16(6, 0, true);
+      endView.setUint16(8, entries.length, true);
+      endView.setUint16(10, entries.length, true);
+      endView.setUint32(12, centralSize, true);
+      endView.setUint32(16, offset, true);
+      endView.setUint16(20, 0, true);
+
+      return new Blob([...localFiles, ...centralDirectory, end], { type: 'application/zip' });
+    }
+
+    async function parseZipEntries(zipBytes) {
+      const view = new DataView(zipBytes.buffer, zipBytes.byteOffset, zipBytes.byteLength);
+      let eocdOffset = -1;
+
+      for (let offset = zipBytes.length - 22; offset >= Math.max(0, zipBytes.length - 65557); offset -= 1) {
+        if (view.getUint32(offset, true) === 0x06054b50) {
+          eocdOffset = offset;
+          break;
+        }
+      }
+
+      if (eocdOffset < 0) {
+        throw new Error('End of central directory not found.');
+      }
+
+      const entryCount = view.getUint16(eocdOffset + 10, true);
+      const centralOffset = view.getUint32(eocdOffset + 16, true);
+      let pointer = centralOffset;
+      const entries = new Map();
+
+      for (let index = 0; index < entryCount; index += 1) {
+        if (view.getUint32(pointer, true) !== 0x02014b50) {
+          throw new Error('Central directory entry missing.');
+        }
+
+        const flags = view.getUint16(pointer + 8, true);
+        const method = view.getUint16(pointer + 10, true);
+        const compressedSize = view.getUint32(pointer + 20, true);
+        const fileNameLength = view.getUint16(pointer + 28, true);
+        const extraLength = view.getUint16(pointer + 30, true);
+        const commentLength = view.getUint16(pointer + 32, true);
+        const localHeaderOffset = view.getUint32(pointer + 42, true);
+
+        const nameStart = pointer + 46;
+        const nameBytes = zipBytes.slice(nameStart, nameStart + fileNameLength);
+        const fileName = decodeZipName(nameBytes, flags);
+
+        if (view.getUint32(localHeaderOffset, true) !== 0x04034b50) {
+          throw new Error('Local file header missing.');
+        }
+
+        const localNameLength = view.getUint16(localHeaderOffset + 26, true);
+        const localExtraLength = view.getUint16(localHeaderOffset + 28, true);
+        const dataStart = localHeaderOffset + 30 + localNameLength + localExtraLength;
+        const compressedData = zipBytes.slice(dataStart, dataStart + compressedSize);
+
+        let data;
+        if (method === 0) {
+          data = compressedData;
+        } else if (method === 8) {
+          data = await inflateRaw(compressedData);
+        } else {
+          throw new Error(`Unsupported ZIP compression method: ${method}`);
+        }
+
+        entries.set(fileName, {
+          name: fileName,
+          data
+        });
+
+        pointer += 46 + fileNameLength + extraLength + commentLength;
+      }
+
+      return entries;
+    }
+
+    function decodeZipName(bytes, flags) {
+      if (flags & 0x0800) {
+        return decodeText(bytes);
+      }
+      let result = '';
+      bytes.forEach((byte) => {
+        result += String.fromCharCode(byte);
+      });
+      return result;
+    }
+
+    async function inflateRaw(bytes) {
+      if (!('DecompressionStream' in window)) {
+        throw new Error('Compressed ZIP archives are not supported in this browser.');
+      }
+      const stream = new Blob([bytes]).stream().pipeThrough(new DecompressionStream('deflate-raw'));
+      return new Uint8Array(await new Response(stream).arrayBuffer());
+    }
+
+    function crc32(bytes) {
+      if (!crc32.table) {
+        crc32.table = new Uint32Array(256);
+        for (let i = 0; i < 256; i += 1) {
+          let c = i;
+          for (let j = 0; j < 8; j += 1) {
+            c = (c & 1) ? (0xedb88320 ^ (c >>> 1)) : (c >>> 1);
+          }
+          crc32.table[i] = c >>> 0;
+        }
+      }
+
+      let crc = 0xffffffff;
+      for (let i = 0; i < bytes.length; i += 1) {
+        crc = crc32.table[(crc ^ bytes[i]) & 0xff] ^ (crc >>> 8);
+      }
+      return (crc ^ 0xffffffff) >>> 0;
+    }
+
+    function dosDateTime(date) {
+      const year = Math.max(1980, date.getFullYear());
+      const month = date.getMonth() + 1;
+      const day = date.getDate();
+      const hours = date.getHours();
+      const minutes = date.getMinutes();
+      const seconds = Math.floor(date.getSeconds() / 2);
+      return {
+        time: (hours << 11) | (minutes << 5) | seconds,
+        date: ((year - 1980) << 9) | (month << 5) | day
+      };
+    }
+  </script>
+
+</body>
+</html>
