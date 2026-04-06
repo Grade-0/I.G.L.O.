@@ -93,6 +93,92 @@
       border-bottom: 1px solid rgba(196, 158, 88, 0.1);
     }
 
+    .storage-banner {
+      border-bottom: 1px solid rgba(210, 175, 108, 0.12);
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    }
+
+    .storage-banner-inner {
+      min-height: 54px;
+      padding: 0.72rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .storage-heading {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .storage-label {
+      font-size: 0.78rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .storage-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      min-height: 34px;
+      padding: 0 0.9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(210, 175, 108, 0.18);
+      background: rgba(255,255,255,0.03);
+      color: var(--text);
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+
+    .storage-dot {
+      width: 0.62rem;
+      height: 0.62rem;
+      border-radius: 999px;
+      background: rgba(210, 175, 108, 0.95);
+      box-shadow: 0 0 0 0.22rem rgba(210, 175, 108, 0.14);
+      flex: 0 0 auto;
+    }
+
+    .storage-message {
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      text-align: right;
+    }
+
+    .storage-banner[data-state="available"] .storage-indicator {
+      border-color: rgba(84, 176, 116, 0.3);
+      background: rgba(84, 176, 116, 0.1);
+      color: #e6f7eb;
+    }
+
+    .storage-banner[data-state="available"] .storage-dot {
+      background: #68c28a;
+      box-shadow: 0 0 0 0.22rem rgba(104, 194, 138, 0.16);
+    }
+
+    .storage-banner[data-state="blocked"] .storage-indicator {
+      border-color: rgba(206, 118, 118, 0.3);
+      background: rgba(206, 118, 118, 0.1);
+      color: #f6d9d9;
+    }
+
+    .storage-banner[data-state="blocked"] .storage-dot {
+      background: #df8080;
+      box-shadow: 0 0 0 0.22rem rgba(223, 128, 128, 0.16);
+    }
+
+    .storage-banner[data-state="checking"] .storage-indicator {
+      border-color: rgba(210, 175, 108, 0.24);
+      background: rgba(210, 175, 108, 0.08);
+    }
+
     .nav {
       min-height: 76px;
       display: flex;
@@ -1010,6 +1096,17 @@
     @media (max-width: 820px) {
       section { padding: 4.5rem 0; }
 
+      .storage-banner-inner,
+      .storage-heading {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .storage-message {
+        max-width: none;
+        text-align: left;
+      }
+
       .nav {
         padding: 0.8rem 0;
         align-items: flex-start;
@@ -1464,6 +1561,15 @@
 </head>
 <body>
   <header class="site-header">
+    <div class="storage-banner" id="storageBanner" data-state="checking" aria-live="polite">
+      <div class="container storage-banner-inner">
+        <div class="storage-heading">
+          <span class="storage-label">Office Records Storage</span>
+          <span class="storage-indicator" id="storageIndicator"><span class="storage-dot" aria-hidden="true"></span><span id="storageStateText">Checking browser storage…</span></span>
+        </div>
+        <div class="storage-message" id="storageMessage">Testing whether this browser can keep client matters, notes, and archived attachments after the page is closed.</div>
+      </div>
+    </div>
     <div class="container nav">
       <a class="brand" href="#top" aria-label="Ibraham Goldstein Law Office home">
         <span class="brand-mark">Established In-City Counsel</span>
@@ -2213,6 +2319,9 @@
 
     const form = document.getElementById('legalForm');
     const successState = document.getElementById('successState');
+    const storageBanner = document.getElementById('storageBanner');
+    const storageStateText = document.getElementById('storageStateText');
+    const storageMessage = document.getElementById('storageMessage');
     const fileInput = document.getElementById('files');
     const fileStatus = document.getElementById('fileStatus');
     const exportArchiveBtn = document.getElementById('exportArchiveBtn');
@@ -2528,12 +2637,17 @@
     init();
 
     async function init() {
+      setStorageBannerState('checking', 'Checking browser storage…', 'Testing whether this browser can keep client matters, notes, and archived attachments after the page is closed.');
+
       try {
+        const probe = await probeStoragePersistence();
+        setStorageBannerState('available', 'Storage Available', probe.detail);
         await refreshRecords(false);
         setArchiveStatus('Records desk ready. New client matters submitted on this page will be stored locally in this browser.', false);
       } catch (error) {
         console.error(error);
-        setArchiveStatus('The records desk could not access browser storage. Archive features may not function in this environment.', true);
+        setStorageBannerState('blocked', 'Storage Blocked', 'This browser session is not allowing persistent local records. Use ZIP export for backup and prefer a normal browser window or hosted page.');
+        setArchiveStatus('The records desk could not access persistent browser storage. ZIP export is still recommended so nothing important is lost.', true);
       }
     }
 
@@ -2665,6 +2779,94 @@
     function setArchiveStatus(message, isError) {
       archiveStatus.textContent = message || '';
       archiveStatus.style.color = isError ? '#f0b6b6' : '';
+    }
+
+    function setStorageBannerState(state, headline, message) {
+      if (storageBanner) {
+        storageBanner.dataset.state = state;
+      }
+      if (storageStateText) {
+        storageStateText.textContent = headline || '';
+      }
+      if (storageMessage) {
+        storageMessage.textContent = message || '';
+      }
+    }
+
+    function runStoreTransaction(mode, handler) {
+      return openDb().then((db) => {
+        return new Promise((resolve, reject) => {
+          const transaction = db.transaction(STORE_NAME, mode);
+          const store = transaction.objectStore(STORE_NAME);
+          let request;
+
+          try {
+            request = handler(store);
+          } catch (error) {
+            reject(error);
+            return;
+          }
+
+          transaction.oncomplete = () => resolve(request ? request.result : undefined);
+          transaction.onerror = () => reject(transaction.error || (request && request.error) || new Error('Storage transaction failed.'));
+          transaction.onabort = () => reject(transaction.error || (request && request.error) || new Error('Storage transaction was aborted.'));
+        });
+      });
+    }
+
+    async function probeStoragePersistence() {
+      const probeId = `__iglo_storage_probe__${Date.now()}${Math.random().toString(16).slice(2)}`;
+      const nowIso = new Date().toISOString();
+      const probeRecord = normalizeRecord({
+        id: probeId,
+        submittedAt: nowIso,
+        updatedAt: nowIso,
+        reviewStatus: 'Closed',
+        officeNotes: '',
+        characterName: 'Storage Probe',
+        fields: {
+          characterName: 'Storage Probe',
+          alias: '',
+          stateId: '',
+          cityPhone: '',
+          matterType: '',
+          status: '',
+          incidentDate: '',
+          incidentTime: '',
+          incidentLocation: '',
+          agency: '',
+          officers: '',
+          charges: '',
+          caseNumber: '',
+          hearingDate: '',
+          judge: '',
+          witnesses: '',
+          summary: '',
+          requestedService: '',
+          urgency: '',
+          contactMethod: ''
+        },
+        priorities: [],
+        attachments: []
+      });
+
+      try {
+        await runStoreTransaction('readwrite', (store) => store.put(probeRecord));
+        const storedProbe = await runStoreTransaction('readonly', (store) => store.get(probeId));
+        if (!storedProbe || storedProbe.id !== probeId) {
+          throw new Error('Saved probe record could not be read back from browser storage.');
+        }
+        return {
+          available: true,
+          detail: 'Client matters should remain available in this browser on this device after closing and reopening the page.'
+        };
+      } finally {
+        try {
+          await runStoreTransaction('readwrite', (store) => store.delete(probeId));
+        } catch (error) {
+          console.warn('Storage probe cleanup failed.', error);
+        }
+      }
     }
 
     async function refreshRecords(preferLatest) {
